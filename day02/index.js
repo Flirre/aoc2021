@@ -22,12 +22,8 @@ function getSolutionPart2(input) {
       horizontal += parseInt(length);
       depth += parseInt(length * aim);
     }
-    if (direction === "up") {
-      aim -= parseInt(length);
-    }
-    if (direction === "down") {
-      aim += parseInt(length);
-    }
+    if (direction === "up") aim -= parseInt(length);
+    if (direction === "down") aim += parseInt(length);
   });
   return depth * horizontal;
 }
