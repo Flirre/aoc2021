@@ -1,19 +1,23 @@
-## Day 2 solution template
+# Javascript (Node with yarn)
+Netscape at one point decided to integrate Scheme (a LISP dialect) as a scripting language in their browser, and they were also negotiating how to integrate Java. But then they changed their mind and decided to create a new language and the marketing department decided to try and steal some of Java's glory by changing the name from LiveScript to Javascript, even though the resemblance to Java was fairly superficial.
 
-This shows the basics of the setup needed to participate in the Cygnified AoC with your solution for a given day (in this case day 2 because we are in the `day02` directory). **The directory structure is important.**
+Some of the design decisions to make it easy to use turned out to be really bad and they haunt us to this day, but Javascript is also a really flexible language and you can occasionally write some really nice code, as long as you don't try to write Java code. Even though Javascript pretends to have classes these days, it really doesn't, with an inheritance model based on prototypes instead. Trying to ignore that is probably a mistake.
 
-The setup must include a `Dockerfile` that includes the solution source code. Your `Dockerfile` must include a `COPY` statement that copies `input.txt` (and possibly other files) from the root of `day02` (in this case) into your image. We will insert (or replace an existing) `input.txt` before creating the image, so uploading it to Github is not necessary (but not prohibited, either). The reason for this is that we use the same input for everyone, in order to be as fair as possible.
+Every professional programmer has to use Javascript to some extent, so it's really helpful to learn how to use it better. There are probably also ten times as many non-professional programmers using Javascript, making it probably the most used language in the world. Crap language or not, it is many people's first love and they will hold it fondly forever.
 
-From all this magic setup, the Cygnified AoC-engine can create a valid image and you're in the game (and that's awesome).
+If you want to run locally, you need to [get node](https://nodejs.org/en/). If you want to use any external packages, this project is set up to [use yarn](https://yarnpkg.com/)
 
-Shell scripting is fun and all, but we have provided examples for many different languages to get you up and running with your favourite weapons, have a look [here](../examples)
+## Docker
+According to the [Cygni AoC procedure](https://github.com/cygni/aoc_example)
 
-### How to build
-`docker build -t aoc02 .`
+## Development
 
-### How to run
-The environment variable `part` specifies which part of the solution to run.
+To run without Docker, just do `node index.js`
 
-`docker run -e part=part1 aoc02`
+To run the unit tests (found in the `test` directory), run this before first time: 
 
-**As this is just a template**, all that `part1` and `part2` does is to print the first and last line of `input.txt`, respectively. For a more realistic example, have a look [here](../examples).
+`yarn install`
+
+Then run this for testing:
+
+`yarn test`

@@ -1,5 +1,4 @@
-FROM alpine:latest
-COPY . /solution
-WORKDIR /solution
+FROM node:17-slim
+COPY . .
 
-CMD ./solution.sh
+CMD node index.js
