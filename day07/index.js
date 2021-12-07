@@ -6,7 +6,6 @@ function inputDataLinesIntegers(filename = "input.txt") {
   }
   return [input, highest];
 }
-
 const fuelCalcs = {};
 const countFuel = (pos, newPos, part1) => {
   if (fuelCalcs[Math.abs(newPos - pos)]) return fuelCalcs[Math.abs(newPos - pos)];
@@ -18,30 +17,21 @@ const countFuel = (pos, newPos, part1) => {
   fuelCalcs[Math.abs(newPos - pos)] = fuel;
   return part1 ? steps:steps+fuel;
 };
-
-const getSolutionPart1 = (input, highest) => {
-  let smallestSum = Infinity, sum = 0;
-  for (let i = 0; i < highest; i++) {
-    sum = sumUp(input, i, true)
-    if (sum < smallestSum) smallestSum = sum;
-  }
-  return smallestSum;
-};
 const sumUp = (input, pos, part1) => {
   let i = 0, sum = 0;
   do{sum += countFuel(input[i], pos, part1); i++;} while (i<input.length)
   return sum;
 }
-
-const getSolutionPart2 = (input, highest) => {
+const calc = (input, highest, part1) => {
   let smallestSum = Infinity, sum = 0;
   for (let i = 0; i < highest; i++) {
-    sum = sumUp(input, i, false);
+    sum = sumUp(input, i, part1);
     if (sum < smallestSum) smallestSum = sum;
   }
   return smallestSum;
 };
-
+const getSolutionPart1 = (input, highest) => calc(input, highest, true);
+const getSolutionPart2 = (input, highest) => calc(input, highest, false);
 const [input, highest] = inputDataLinesIntegers();
 const part = process.env.part || "part1";
 part === "part1" ? console.log(getSolutionPart1(input, highest)) : console.log(getSolutionPart2(input, highest));
